@@ -1,9 +1,20 @@
+'use client';
+
+import { useFilter } from '@/lib/use-filter';
+
 export function FilterItem({ text }: { text: string }) {
+  const { removeFilter } = useFilter();
+
+  function handleClick() {
+    removeFilter(text);
+  }
+
   return (
     <li className="flex items-center rounded-l-md bg-accent/10 pl-4 font-bold text-accent">
       {text}
       <button
         type="button"
+        onClick={handleClick}
         className="ml-4 rounded-r-md bg-accent p-3 transition-colors hover:bg-primaryText focus-visible:bg-primaryText"
       >
         <span className="sr-only">Remove {text} from filters</span>

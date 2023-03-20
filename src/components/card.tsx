@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Chip } from './chip';
 import { Tag } from './tag';
 
-import type { TJob } from '@/lib/types';
+import type { TJob } from '@/lib/utils';
 
 export function Card({
   logo,
@@ -37,7 +37,7 @@ export function Card({
         </div>
         <Link
           href="/"
-          className="transition-colors hover:text-accent focus-visible:text-accent lg:text-xl"
+          className="w-max transition-colors hover:text-accent focus-visible:text-accent lg:text-xl"
         >
           {position}
         </Link>
