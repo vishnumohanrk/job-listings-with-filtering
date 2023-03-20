@@ -23,7 +23,9 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body className="bg-primaryBg font-sans antialiased">
         <BgPattern />
-        {children}
+        <main className="mx-auto max-w-screen-xl -translate-y-12 px-4">
+          {children}
+        </main>
       </body>
     </html>
   );
