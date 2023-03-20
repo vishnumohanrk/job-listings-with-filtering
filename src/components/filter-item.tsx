@@ -1,12 +1,8 @@
-'use client';
+import type { TagProps } from '@/lib/utils';
 
-import { useFilter } from '@/lib/use-filter';
-
-export function FilterItem({ text }: { text: string }) {
-  const { removeFilter } = useFilter();
-
+export function FilterItem({ text, action }: TagProps) {
   function handleClick() {
-    removeFilter(text);
+    action(text);
   }
 
   return (

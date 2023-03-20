@@ -1,5 +1,3 @@
-import { DATA } from './data';
-
 export type TJob = {
   id: number;
   company: string;
@@ -16,6 +14,11 @@ export type TJob = {
   tools: string[];
 };
 
+export type TagProps = {
+  text: string;
+  action: (text: string) => void;
+};
+
 export function getTagsFromParams(filter: string | string[] | undefined) {
   if (!filter || filter.length === 0) return [];
 
@@ -27,12 +30,12 @@ export function getTagsFromParams(filter: string | string[] | undefined) {
   return arr.filter(Boolean);
 }
 
-export function getFilteredData(filters: string[]) {
+export function getFilteredData(jobs: TJob[], filters: string[]) {
   if (filters.length === 0) {
-    return DATA;
+    return jobs;
   }
 
-  return DATA.filter(({ role, level, languages, tools }) => {
+  return jobs.filter(({ role, level, languages, tools }) => {
     const arr = [role, level, ...languages, ...tools].map(i => i.toLowerCase());
 
     return filters.every(i => arr.includes(i.toLowerCase()));

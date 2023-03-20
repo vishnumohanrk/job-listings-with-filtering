@@ -6,6 +6,10 @@ import { Tag } from './tag';
 
 import type { TJob } from '@/lib/utils';
 
+type CardProps = TJob & {
+  addFilter: (text: string) => void;
+};
+
 export function Card({
   logo,
   company,
@@ -19,7 +23,8 @@ export function Card({
   role,
   tools,
   languages,
-}: TJob) {
+  addFilter,
+}: CardProps) {
   const tags = [role, level, ...languages, ...tools];
 
   return (
@@ -53,7 +58,7 @@ export function Card({
       <ul className="flex flex-wrap gap-4">
         {tags.map(i => (
           <li key={i}>
-            <Tag text={i} />
+            <Tag text={i} action={addFilter} />
           </li>
         ))}
       </ul>

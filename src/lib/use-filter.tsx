@@ -1,27 +1,31 @@
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
-import { getTagsFromParams } from './utils';
+import type { TJob } from './utils';
+import { getFilteredData, getTagsFromParams } from './utils';
 
-export function useFilter() {
+export function useFilter(allJobs: TJob[]) {
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   const currentFilters = useMemo(
-    () => getTagsFromParams(searchParams.getAll('filter')),
-
-    [searchParams]
+    () => getTagsFromParams(router.query.filter),
+    [router.query.filter]
   );
 
-  function addFilter(text: string) {
-    if (!currentFilters.includes(text)) {
-      const newFilters = [...currentFilters, text];
+  const jobs = useMemo(
+    () => getFilteredData(allJobs, currentFilters),
+    [allJobs, currentFilters]
+  );
+
+  function addFilter(tag: string) {
+    if (!currentFilters.includes(tag)) {
+      const newFilters = [...currentFilters, tag];
       router.push(`/?filter=${newFilters.join()}`);
     }
   }
 
-  function removeFilter(text: string) {
-    const newFilters = currentFilters.filter(i => i !== text);
+  function removeFilter(tag: string) {
+    const newFilters = currentFilters.filter(i => i !== tag);
 
     if (newFilters.length) {
       router.push(`/?filter=${newFilters.join()}`);
@@ -31,7 +35,9 @@ export function useFilter() {
   }
 
   return {
+    jobs,
     addFilter,
     removeFilter,
+    tags: currentFilters,
   };
 }
