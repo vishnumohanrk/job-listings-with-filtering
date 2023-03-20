@@ -17,6 +17,14 @@ module.exports = {
         secondaryText: 'hsl(180, 8%, 52%)',
         // 'Light-Grayish-Cyan1': 'hsl(180, 31%, 95%)',
       },
+
+      boxShadow: {
+        card: '0px 15px 20px -5px rgba(13, 113, 130, 0.15)',
+      },
+
+      borderRadius: {
+        5: '5px',
+      },
     },
   },
 

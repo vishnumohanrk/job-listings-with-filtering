@@ -28,7 +28,13 @@ export function Card({
   const tags = [role, level, ...languages, ...tools];
 
   return (
-    <article className="relative items-center rounded-lg bg-white px-6 py-8 font-bold shadow-md lg:flex">
+    <article className="relative items-center rounded-5 bg-white px-6 py-8 font-bold shadow-card lg:flex">
+      {featured && (
+        <span
+          aria-hidden
+          className="absolute top-0 left-0 h-full w-[5px] rounded-l-5 bg-accent"
+        />
+      )}
       <img
         src={logo}
         alt={`${company} logo`}

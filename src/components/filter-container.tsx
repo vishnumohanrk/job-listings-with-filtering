@@ -9,7 +9,8 @@ type FilterContainerProps = {
 
 export function FilterContainer({ tags, removeFilter }: FilterContainerProps) {
   return tags.length ? (
-    <section className="sticky top-12 z-20 flex w-full items-center rounded-lg bg-white px-6 py-8 shadow-md">
+    <section className="sticky top-11 z-20 flex w-full items-center rounded-5 bg-white p-6 shadow-card">
+      <h2 className="sr-only">Selected Filters</h2>
       <ul className="flex flex-1 flex-wrap gap-4">
         {tags.map(i => (
           <FilterItem key={i} text={i} action={removeFilter} />
@@ -23,6 +24,6 @@ export function FilterContainer({ tags, removeFilter }: FilterContainerProps) {
       </Link>
     </section>
   ) : (
-    <div className="h-[102px] w-full" />
+    <div className="h-[86px] w-full" />
   );
 }

@@ -15,7 +15,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <>
       <BgPattern />
       <main
-        className={`${inter.variable} mx-auto max-w-screen-xl -translate-y-12 px-4 font-sans antialiased`}
+        className={`${inter.variable} mx-auto max-w-[1110px] -translate-y-11 pb-20 font-sans antialiased max-xl:px-4`}
       >
         <Component {...pageProps} />
       </main>

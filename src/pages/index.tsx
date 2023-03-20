@@ -15,6 +15,7 @@ export default function HomePage({ allJobs }: { allJobs: TJob[] }) {
       <MetaHead />
       <FilterContainer tags={tags} removeFilter={removeFilter} />
       <section className="mt-14 grid gap-x-4 gap-y-14 md:grid-cols-2 lg:mt-6 lg:grid-cols-1 lg:gap-y-6">
+        <h2 className="sr-only">Available Jobs for the selected filters</h2>
         {jobs.map(i => (
           <Card key={i.id} addFilter={addFilter} {...i} />
         ))}
